@@ -1,10 +1,18 @@
 fun main() {
-    val input = getUserInput()
-    val userNumbers = userInputToList(input)
+    var gameFinished = false
     val randomNumbers = generateRandomNumberList()
-    val n = countCorrectGuesses(userNumbers, randomNumbers)
-    val m = countCorrectPosition(userNumbers, randomNumbers)
-    print("User input: $input, Output: $n:$m")
+    print(randomNumbers)
+    while (!gameFinished) {
+        val input = getUserInput()
+        val userNumbers = userInputToList(input)
+        val n = countCorrectGuesses(userNumbers, randomNumbers)
+        val m = countCorrectPosition(userNumbers, randomNumbers)
+        println("User input: $input, Output: $n:$m")
+        if (m == 4) {
+            println("Congratulation, you guessed all numbers correctly!")
+            gameFinished = true
+        }
+    }
 }
 
 fun getUserInput(): String {
@@ -55,4 +63,3 @@ fun countCorrectGuesses(userNumbers: MutableList<String>, randomNumbers: Mutable
     }
     return n
 }
-
